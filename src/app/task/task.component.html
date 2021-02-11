@@ -11,8 +11,8 @@
         <span>{{ task.goldValue }}</span>
     </div>
     <p>Due: {{ dueDateString }}</p>
-    <div>
-        <h4>Skills</h4>
-        <span *ngFor="let skill of task.skills">{{ skill.name }} </span>
+    <h4>Skills</h4>
+    <div class="task__skill-list">
+        <span class="task__skill" *ngFor="let skill of task.skills">{{ skill.name }} </span>
     </div>
 </div>

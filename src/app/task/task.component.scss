@@ -5,9 +5,29 @@
     padding: 22px;
     max-width: 15em;
     margin: 10px;
+    position: relative;
 
     h3 {
         font-size: 22px;
         margin-top: 0;
     }
+
+    h4 {
+        font-size: 18px;
+    }
+}
+
+.task__skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.task__skill {
+    background-color: rgb(255, 216, 166);
+    border: 1px solid orange;
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    margin-right: 5px;
 }
