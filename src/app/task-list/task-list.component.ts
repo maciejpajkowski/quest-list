@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Skill } from '../shared/models/skill.model';
+import { TasksService } from '../services/tasks.service';
 import { Task } from '../shared/models/task.model';
 
 @Component({
@@ -8,40 +8,11 @@ import { Task } from '../shared/models/task.model';
     styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent implements OnInit {
-    public tasks: Task[] = [
-        new Task(
-            'Build this app!',
-            5,
-            'This will be my first fully self-made Angular app!',
-            10000,
-            1000,
-            new Date(),
-            false,
-            [new Skill('Webdev'), new Skill('CSS'), new Skill('Angular')]
-        ),
-        new Task(
-            'Build this app!',
-            5,
-            'This will be my first fully self-made Angular app!',
-            10000,
-            1000,
-            new Date(),
-            false,
-            [new Skill('Webdev'), new Skill('CSS'), new Skill('Angular')]
-        ),
-        new Task(
-            'Build this app!',
-            5,
-            'This will be my first fully self-made Angular app!',
-            10000,
-            1000,
-            new Date(),
-            false,
-            [new Skill('Webdev'), new Skill('CSS'), new Skill('Angular')]
-        ),
-    ];
+    public tasks: Task[] = [];
 
-    constructor() {}
+    constructor(private tasksService: TasksService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.tasks = this.tasksService.getTasks();
+    }
 }
