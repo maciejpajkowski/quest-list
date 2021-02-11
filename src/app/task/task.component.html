@@ -1,0 +1,18 @@
+<div class="task">
+    <h3>{{ task.name }}</h3>
+    <p>{{ task.description }}</p>
+    <p>Difficulty: {{ task.difficulty }}</p>
+    <div>
+        <span>Experience:</span>
+        <span>{{ task.expValue }}</span>
+    </div>
+    <div>
+        <span>Gold:</span>
+        <span>{{ task.goldValue }}</span>
+    </div>
+    <p>Due: {{ dueDateString }}</p>
+    <div>
+        <h4>Skills</h4>
+        <span *ngFor="let skill of task.skills">{{ skill.name }} </span>
+    </div>
+</div>

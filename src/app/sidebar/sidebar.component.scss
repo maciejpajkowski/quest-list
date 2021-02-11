@@ -1,6 +1,8 @@
 .sidebar {
     border: 1px solid #ccc;
     border-radius: 15px;
+    box-shadow: 0 0 6px 2px #ddd;
+    min-width: 260px;
 }
 
 .sidebar__title {
@@ -32,11 +34,13 @@
             cursor: pointer;
             background-color: orange;
             color: #fff;
+            transform: scale(1.08);
+            box-shadow: 0 0 4px 1px #999;
         }
 
         &:active {
             background-color: gold;
-            transform: scale(0.8);
+            transform: scale(1);
         }
 
         span {
