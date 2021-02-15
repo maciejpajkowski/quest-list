@@ -9,7 +9,6 @@ export class Task {
         public expValue?: number,
         public goldValue?: number,
         public dueDate?: Date,
-        public overdue?: boolean,
         public skills?: Skill[]
     ) {}
 }

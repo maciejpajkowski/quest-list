@@ -1,6 +1,8 @@
 <main class="task-list">
     <app-task 
-        *ngFor="let task of tasks" 
-        [task]="task">
+        *ngFor="let task of tasks; let i = index" 
+        [task]="task"
+        [id]="i">
     </app-task>
+    <router-outlet></router-outlet>
 </main>

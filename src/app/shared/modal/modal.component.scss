@@ -1,0 +1,48 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 50;
+}
+
+.alert-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 51;
+}
+
+.alert-box {
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    width: 40vw;
+    padding: 16px;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 15px;
+    transition: all 0.3s;
+    animation: fadeIn 0.3s ease-in forwards;
+}
+
+.alert-box-actions {
+    text-align: right;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* TODO - change modal opening to class based to animate closing -- maybe a directive here? */

@@ -1,22 +1,30 @@
 <div class="sidebar">
     <h2 class="sidebar__title">Menu</h2>
     <ul class="sidebar__list">
-        <li>
-            <span>➕</span>
-            Create a new task
-        </li>
-        <li>
-            <span>📜</span>
-            Tasks
-        </li>
-        <li>
-            <span>🎯</span>
-            Skills
-        </li>
-        <li>
-            <span>⚡</span>
-            Progress
-        </li>
+        <a routerLink="tasks/new-task">
+            <li>
+                <span>➕</span>
+                Create a new task
+            </li>
+        </a>
+        <a routerLink="tasks">
+            <li>
+                <span>📜</span>
+                Tasks
+            </li>
+        </a>
+        <a routerLink="skills">
+            <li>
+                <span>🎯</span>
+                Skills
+            </li>
+        </a>
+        <a routerLink="progress">
+            <li>
+                <span>⚡</span>
+                Progress
+            </li>
+        </a>
     </ul>
 </div>
 

@@ -1,15 +1,27 @@
 .task {
     border: 1px solid #ccc;
     border-radius: 15px;
-    box-shadow: 0 0 6px 2px #ddd;
+    box-shadow: 0 0 4px 2px #ddd;
     padding: 22px;
     max-width: 15em;
     margin: 10px;
     position: relative;
+    transition: all 0.3s;
 
-    h3 {
-        font-size: 22px;
-        margin-top: 0;
+    &:hover {
+        box-shadow: 0 0 8px 3px #ddd;
+        transform: translateY(-3px);
+        cursor: pointer;
+
+        .task__controls {
+            opacity: 1;
+            transition: all 0.3s;
+
+            &:hover {
+                color: limegreen;
+                transform: scale(1.2);
+            }
+        }
     }
 
     h4 {
@@ -24,10 +36,44 @@
 }
 
 .task__skill {
-    background-color: rgb(255, 216, 166);
+    background-color: rgb(255, 232, 202);
     border: 1px solid orange;
     border-radius: 10px;
     padding: 8px;
     display: flex;
     margin-right: 5px;
+}
+
+.task__title {
+    font-size: 20px;
+    margin-right: 32px;
+    word-break: break-word;
+    word-wrap: normal;
+
+    h3 {
+        font-size: 22px;
+        margin: 0;
+    }
+}
+
+.task__difficulty {
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.task__controls {
+    color: lightgreen;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 30px;
+    display: flex;
+    margin-left: 5px;
+    opacity: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

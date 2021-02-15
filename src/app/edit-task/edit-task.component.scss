@@ -1,0 +1,83 @@
+h2 {
+    text-align: center;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    font-size: 20px;
+
+    label {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        outline: none;
+
+        option {
+            font-size: 16px;
+        }
+
+        &:focus {
+            border: 1px solid rgb(255, 226, 171);
+            box-shadow: 0 0 4px 1px rgb(255, 226, 171) inset;
+        }
+    }
+}
+
+.form__subgroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+        width: 60%;
+    }
+}
+
+.form__controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form__button {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+    background-color: limegreen;
+    color: white;
+    margin-right: 8px;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: lightgreen;
+    }
+}
+
+.form__button--delete {
+    background-color: rgb(216, 53, 53);
+
+    &:hover {
+        background-color: red;
+    }
+}
+
+.form__button--cancel {
+    background-color: gray;
+
+    &:hover {
+        background-color: #ccc;
+    }
+}

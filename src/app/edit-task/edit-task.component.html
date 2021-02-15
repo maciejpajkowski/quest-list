@@ -1,0 +1,41 @@
+<app-modal>
+    <h2>{{ editMode ? 'Editing task' : 'Create a new task!'}} </h2>
+    <form (ngSubmit)="onSubmit(taskForm)" #f="ngForm">
+        <div class="form__group">
+            <label for="name">Task name:</label>
+            <input type="text" name="name" id="name" ngModel required>
+        </div>
+        <div class="form__group">
+            <label for="description">Task description:</label>
+            <textarea type="text" rows="3" name="description" id="description" ngModel></textarea>
+        </div>
+        <div class="form__group">
+            <label for="difficulty">Task difficulty:</label>
+            <select name="difficulty" id="difficulty" ngModel required>
+                <option value="1">Very easy</option>
+                <option value="2">Easy</option>
+                <option value="3" selected>Normal</option>
+                <option value="4">Hard</option>
+                <option value="5">Very hard</option>
+                <option value="6">Legendary</option>
+            </select>
+        </div>
+        <div class="form__subgroup">
+            <div class="form__group">
+                <label for="expValue">Experience:</label>
+                <input type="number" name="expValue" id="expValue" ngModel>
+            </div>
+            <div class="form__group">
+                <label for="goldValue">Gold:</label>
+                <input type="number" name="goldValue" id="goldValue" ngModel>
+            </div>
+        </div>
+        <!-- TODO - add date picker -->
+        <!-- TODO - add skill picker -->
+        <div class="form__controls">
+            <button class="form__button" type="submit">{{ editMode ? 'Modify task' : 'Add task!'}}</button>
+            <button class="form__button form__button--delete" type="button" (click)="onDelete()" *ngIf="editMode">Forfeit</button>
+            <button class="form__button form__button--cancel" type="button" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</app-modal>
