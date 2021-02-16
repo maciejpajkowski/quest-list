@@ -81,3 +81,50 @@ h2 {
         background-color: #ccc;
     }
 }
+
+.form__skill-container {
+    display: flex;
+    margin-bottom: 16px;
+
+    .form__group {
+        width: 48%;
+        margin-right: 8px;
+    }
+
+    .form__skills {
+        width: 48%;
+        max-height: 80px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 5px;
+        overflow: auto;
+
+        .form__skills-notification {
+            font-size: 14px;
+            font-style: italic;
+            color: #777;
+        }
+    }
+
+    .form__skill {
+        background-color: rgb(255, 232, 202);
+        border: 1px solid orange;
+        border-radius: 10px;
+        padding: 8px;
+        display: inline-block;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 5px;
+        margin-bottom: 5px;
+
+        :first-child {
+            cursor: pointer;
+            margin-left: 5px;
+            color: rgb(216, 53, 53);
+
+            &:hover {
+                color: red;
+            }
+        }
+    }
+}

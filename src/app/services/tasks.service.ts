@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Skill } from '../shared/models/skill.model';
 import { Task } from '../shared/models/task.model';
 

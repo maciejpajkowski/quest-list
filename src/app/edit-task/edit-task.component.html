@@ -31,7 +31,27 @@
             </div>
         </div>
         <!-- TODO - add date picker -->
-        <!-- TODO - add skill picker -->
+        <div class="form__skill-container">
+            <div class="form__group">
+                <label for="skills">Skills</label>
+                <select name="skills" id="skills" (change)="onSkillSelected($event)">
+                    <option value="">Pick a skill...</option>
+                    <option 
+                        *ngFor="let availableSkill of availableSkills" 
+                        [value]="availableSkill.id"
+                        >
+                        {{ availableSkill.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="form__skills">
+                <span class="form__skills-notification" *ngIf="selectedSkills.length === 0">No skills selected!</span>
+                <span class="form__skill" *ngFor="let selectedSkill of selectedSkills">
+                    {{ selectedSkill.name }}
+                    <fa-icon [icon]="faTimesCircle" (click)="onSkillRemoved(selectedSkill.id)"></fa-icon>
+                </span>
+            </div>
+        </div>
         <div class="form__controls">
             <button class="form__button" type="submit">{{ editMode ? 'Modify task' : 'Add task!'}}</button>
             <button class="form__button form__button--delete" type="button" (click)="onDelete()" *ngIf="editMode">Forfeit</button>
