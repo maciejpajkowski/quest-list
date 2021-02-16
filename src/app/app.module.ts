@@ -11,6 +11,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from './shared/modal/modal.component';
+import { SkillListComponent } from './skill-list/skill-list.component';
+import { SkillComponent } from './skill/skill.component';
+import { EditSkillComponent } from './edit-skill/edit-skill.component';
+import { ProgressComponent } from './progress/progress.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +25,10 @@ import { ModalComponent } from './shared/modal/modal.component';
         TaskComponent,
         EditTaskComponent,
         ModalComponent,
+        SkillListComponent,
+        SkillComponent,
+        EditSkillComponent,
+        ProgressComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, FormsModule],
     providers: [],

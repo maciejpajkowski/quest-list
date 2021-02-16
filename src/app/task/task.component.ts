@@ -40,7 +40,7 @@ export class TaskComponent implements OnInit {
     }
 
     onTaskSelection() {
-        console.log('task with id ' + this.task.id + ' clicked');
+        // console.log('task with id ' + this.task.id + ' clicked');
         this.tasksService.startedEditing.next(this.task.id);
     }
 }

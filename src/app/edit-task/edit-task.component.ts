@@ -34,12 +34,14 @@ export class EditTaskComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.availableSkills = this.skillsService.getSkills();
         this.subscription = this.route.params.subscribe((params: Params) => {
-            this.taskId = +params['id'];
             this.editMode = params['id'] != null;
-            this.currentTask = this.tasksService.getTaskByID(this.taskId);
-            console.log(this.currentTask);
 
             if (this.editMode) {
+                this.taskId = +params['id'];
+                this.currentTask = this.tasksService.getTaskByID(this.taskId);
+                // console.log(this.currentTask);
+                this.selectedSkills = this.currentTask.skills || [];
+                this.removeAlreadySelectedSkills();
                 setTimeout(() => {
                     this.taskForm.setValue({
                         name: this.currentTask.name,
@@ -71,7 +73,16 @@ export class EditTaskComponent implements OnInit, OnDestroy {
                 : 0;
         this.editMode ? (id = this.taskId) : id;
         console.log(id);
-        const newTask = new Task(id, value.name, +value.difficulty, value.description, value.expValue, value.goldValue);
+        const newTask = new Task(
+            id,
+            value.name,
+            +value.difficulty,
+            value.description,
+            value.expValue,
+            value.goldValue,
+            undefined,
+            this.selectedSkills
+        );
         console.log(newTask);
         if (this.editMode) {
             this.tasksService.editTask(this.taskId, newTask);
@@ -104,5 +115,12 @@ export class EditTaskComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+    }
+
+    private removeAlreadySelectedSkills() {
+        const results = this.availableSkills.filter(
+            ({ id: id1 }) => !this.selectedSkills.some(({ id: id2 }) => id1 === id2)
+        );
+        this.availableSkills = results;
     }
 }

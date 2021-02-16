@@ -3,7 +3,8 @@
     border-radius: 15px;
     box-shadow: 0 0 4px 2px #ddd;
     padding: 22px;
-    max-width: 15em;
+    min-width: 200px;
+    max-width: 250px;
     margin: 10px;
     position: relative;
     transition: all 0.3s;
@@ -26,6 +27,7 @@
 
     h4 {
         font-size: 18px;
+        margin-bottom: 4px;
     }
 }
 
@@ -42,6 +44,7 @@
     padding: 8px;
     display: flex;
     margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .task__title {
@@ -65,8 +68,8 @@
 .task__controls {
     color: lightgreen;
     position: absolute;
-    right: 16px;
-    top: 16px;
+    right: 22px;
+    top: 22px;
     font-size: 30px;
     display: flex;
     margin-left: 5px;

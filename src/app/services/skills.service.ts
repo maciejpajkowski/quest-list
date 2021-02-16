@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Skill } from '../shared/models/skill.model';
 
 @Injectable({
     providedIn: 'root',
 })
 export class SkillsService {
+    public skillsChanged = new Subject<Skill[]>();
+    public startedEditing = new Subject<number>();
     private skills: Skill[] = [
         new Skill(0, 'Cooking', 0, 1),
         new Skill(1, 'Running', 0, 1),
