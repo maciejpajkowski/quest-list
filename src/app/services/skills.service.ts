@@ -13,6 +13,7 @@ export class SkillsService {
         new Skill(1, 'Running', 0, 1),
         new Skill(2, 'Chess', 0, 1),
         new Skill(3, 'Programming', 0, 1),
+        new Skill(4, 'Games', 0, 1),
     ];
 
     constructor() {}

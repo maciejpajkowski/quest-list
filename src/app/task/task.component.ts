@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faEdit, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { TasksService } from '../services/tasks.service';
 import { Task } from '../shared/models/task.model';
 

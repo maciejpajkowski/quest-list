@@ -1,4 +1,13 @@
 <main class="skill-list">
-    <app-skill></app-skill>
+    <app-skill
+        *ngFor="let skill of skills"
+        [skill]="skill">
+    </app-skill>
+    <a class="create-skill" routerLink="new-skill">
+        <span>
+            +
+        </span>
+        <span>Create a new skill</span>
+    </a>
     <router-outlet></router-outlet>
 </main>

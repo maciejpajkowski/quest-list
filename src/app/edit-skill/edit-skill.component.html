@@ -1,1 +1,9 @@
-<p>edit-skill works!</p>
+<app-modal>
+    <h2>{{ editMode ? 'Editing skill' : 'Create a new skill!'}} </h2>
+    <form (ngSubmit)="onSubmit(skillForm)" #f="ngForm">
+        <div class="form__group">
+            <label for="name">Skill name:</label>
+            <input type="text" name="name" id="name" ngModel required>
+        </div>
+    </form>
+</app-modal>

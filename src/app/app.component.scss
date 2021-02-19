@@ -4,6 +4,10 @@
     height: auto;
     margin: 60px auto;
 
+    :last-child {
+        width: 100%;
+    }
+
     @media (max-width: 1600px) {
         width: 90%;
     }

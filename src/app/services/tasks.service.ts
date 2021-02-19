@@ -44,7 +44,7 @@ export class TasksService {
 
     constructor() {}
 
-    sendUpdatedList() {
+    sendUpdatedList(): void {
         this.tasksChanged.next([...this.tasks]);
     }
 
@@ -56,20 +56,20 @@ export class TasksService {
         return this.tasks.filter((task) => task.id === id)[0];
     }
 
-    addTask(task: Task) {
+    addTask(task: Task): void {
         this.tasks.push(task);
         this.sendUpdatedList();
     }
 
-    editTask(id: number, task: Task) {
-        const index = this.tasks.findIndex((item) => item.id === id);
-        let updatedTasks = [...this.tasks];
+    editTask(id: number, task: Task): void {
+        const index: number = this.tasks.findIndex((item) => item.id === id);
+        let updatedTasks: Task[] = [...this.tasks];
         updatedTasks[index] = task;
         this.tasks = updatedTasks;
         this.sendUpdatedList();
     }
 
-    removeTask(id: number) {
+    removeTask(id: number): void {
         this.tasks = this.tasks.filter((task) => task.id !== id);
         this.sendUpdatedList();
     }

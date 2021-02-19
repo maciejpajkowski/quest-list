@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-modal',
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 export class ModalComponent {
     @Output() close = new EventEmitter<void>();
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private route: ActivatedRoute) {}
 
     onClose() {
-        this.router.navigate(['..']);
+        this.router.navigate(['..'], { relativeTo: this.route });
     }
 }
