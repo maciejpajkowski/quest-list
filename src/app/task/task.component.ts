@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { ProfileService } from '../services/profile.service';
 import { TasksService } from '../services/tasks.service';
 import { Task } from '../shared/models/task.model';
 
@@ -14,7 +15,7 @@ export class TaskComponent implements OnInit {
     @Input() task!: Task;
     public dueDateString?: string;
 
-    constructor(private tasksService: TasksService) {}
+    constructor(private tasksService: TasksService, private profileService: ProfileService) {}
 
     ngOnInit(): void {
         this.dueDateString = this.task.dueDate?.toLocaleDateString('en-GB');
@@ -42,5 +43,10 @@ export class TaskComponent implements OnInit {
     onTaskSelection() {
         // console.log('task with id ' + this.task.id + ' clicked');
         this.tasksService.startedEditing.next(this.task.id);
+    }
+
+    onTaskCompletion() {
+        this.tasksService.removeTask(this.task.id);
+        this.profileService.addExperience(this.task.expValue!);
     }
 }

@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SkillsService } from '../services/skills.service';
 import { Skill } from '../shared/models/skill.model';
@@ -13,7 +12,7 @@ export class SkillListComponent implements OnInit, OnDestroy {
     public skills: Skill[] = [];
     public subscription!: Subscription;
 
-    constructor(private skillsService: SkillsService, private router: Router) {}
+    constructor(private skillsService: SkillsService) {}
 
     ngOnInit(): void {
         this.skills = this.skillsService.getSkills();
@@ -24,9 +23,5 @@ export class SkillListComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
-    }
-
-    onCreateSkill(): void {
-        this.router.navigate(['new-skill']);
     }
 }

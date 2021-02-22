@@ -30,7 +30,9 @@
                 <input type="number" name="goldValue" id="goldValue" ngModel>
             </div>
         </div>
-        <!-- TODO - add date picker -->
+        <div>
+            <dp-date-picker [(ngModel)]="selectedDate"></dp-date-picker>
+        </div>
         <div class="form__skill-container">
             <div class="form__group">
                 <label for="skills">Skills</label>

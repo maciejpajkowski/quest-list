@@ -17,7 +17,7 @@ export class TasksService {
             'This will be my first fully self-made Angular app!',
             10000,
             1000,
-            new Date(),
+            undefined,
             [new Skill(0, 'Webdev'), new Skill(1, 'CSS'), new Skill(2, 'Angular')]
         ),
         new Task(
@@ -27,7 +27,7 @@ export class TasksService {
             'This will be my first fully self-made Angular app!',
             10000,
             1000,
-            new Date(),
+            undefined,
             [new Skill(0, 'Webdev'), new Skill(1, 'CSS'), new Skill(2, 'Angular')]
         ),
         new Task(
@@ -37,7 +37,7 @@ export class TasksService {
             'This will be my first fully self-made Angular app!',
             10000,
             1000,
-            new Date(),
+            undefined,
             [new Skill(0, 'Webdev'), new Skill(1, 'CSS'), new Skill(2, 'Angular')]
         ),
     ];

@@ -18,7 +18,33 @@ export class SkillsService {
 
     constructor() {}
 
+    sendUpdatedList(): void {
+        this.skillsChanged.next([...this.skills]);
+    }
+
     getSkills(): Skill[] {
         return [...this.skills];
+    }
+
+    getSkillByID(id: number): Skill {
+        return this.skills.filter((skill) => skill.id === id)[0];
+    }
+
+    editSkill(id: number, skill: Skill): void {
+        const index: number = this.skills.findIndex((item) => item.id === id);
+        let updatedskills: Skill[] = [...this.skills];
+        updatedskills[index] = skill;
+        this.skills = updatedskills;
+        this.sendUpdatedList();
+    }
+
+    addSkill(skill: Skill): void {
+        this.skills.push(skill);
+        this.sendUpdatedList();
+    }
+
+    removeSkill(id: number): void {
+        this.skills = this.skills.filter((skill) => skill.id !== id);
+        this.sendUpdatedList();
     }
 }

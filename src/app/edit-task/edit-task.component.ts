@@ -15,12 +15,13 @@ import { Task } from '../shared/models/task.model';
 })
 export class EditTaskComponent implements OnInit, OnDestroy {
     @ViewChild('f') taskForm!: NgForm;
-    editMode: boolean = false;
-    taskId!: number;
-    currentTask!: Task;
-    subscription!: Subscription;
-    availableSkills!: Skill[];
-    selectedSkills: Skill[] = [];
+    public editMode: boolean = false;
+    public taskId!: number;
+    public currentTask!: Task;
+    public subscription!: Subscription;
+    public availableSkills!: Skill[];
+    public selectedSkills: Skill[] = [];
+    public selectedDate: any;
 
     faTimesCircle = faTimesCircle;
 
@@ -39,7 +40,6 @@ export class EditTaskComponent implements OnInit, OnDestroy {
             if (this.editMode) {
                 this.taskId = +params['id'];
                 this.currentTask = this.tasksService.getTaskByID(this.taskId);
-                // console.log(this.currentTask);
                 this.selectedSkills = this.currentTask.skills || [];
                 this.removeAlreadySelectedSkills();
                 setTimeout(() => {
@@ -58,6 +58,7 @@ export class EditTaskComponent implements OnInit, OnDestroy {
     onSubmit(form: NgForm) {
         const value = form.value;
         console.log(this.tasksService.getTasks());
+
         let id =
             this.tasksService.getTasks().length !== 0
                 ? this.tasksService
@@ -71,8 +72,10 @@ export class EditTaskComponent implements OnInit, OnDestroy {
                           }
                       }) + 1
                 : 0;
+
         this.editMode ? (id = this.taskId) : id;
         console.log(id);
+
         const newTask = new Task(
             id,
             value.name,
@@ -84,11 +87,13 @@ export class EditTaskComponent implements OnInit, OnDestroy {
             this.selectedSkills
         );
         console.log(newTask);
+
         if (this.editMode) {
             this.tasksService.editTask(this.taskId, newTask);
         } else {
             this.tasksService.addTask(newTask);
         }
+
         this.onCancel();
         form.reset();
     }

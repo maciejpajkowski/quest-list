@@ -1,27 +1,26 @@
-<a [routerLink]="[task.id]" (click)="onTaskSelection()">
-    <div class="task">
-        <div class="task__title">
-            <h3>{{ task.name }}</h3>
-        </div>
-        <div class="task__controls">
-            <fa-icon [icon]="faCheckCircle"></fa-icon>
-        </div>
-        <span class="task__difficulty">Difficulty: {{ difficulty }}</span>
-        <p>{{ task.description }}</p>
-        <div>
-            <span>Experience: </span>
-            <span>{{ task.expValue }}</span>
-        </div>
-        <div>
-            <span>Gold: </span>
-            <span>{{ task.goldValue }}</span>
-        </div>
-        <p *ngIf="dueDateString">Due: {{ dueDateString }}</p>
-        <div *ngIf="task.skills!.length > 0">
-            <h4>Skills</h4>
-            <div class="task__skill-list">
-                <span class="task__skill" *ngFor="let skill of task.skills">{{ skill.name }} </span>
-            </div>
+<div class="task" (click)="onTaskSelection()">
+    <a [routerLink]="[task.id]"></a>
+    <div class="task__controls" (click)="onTaskCompletion()">
+        <fa-icon [icon]="faCheckCircle"></fa-icon>
+    </div>
+    <div class="task__title">
+        <h3>{{ task.name }}</h3>
+    </div>
+    <span class="task__difficulty">Difficulty: {{ difficulty }}</span>
+    <p>{{ task.description }}</p>
+    <div>
+        <span>Experience: </span>
+        <span>{{ task.expValue }}</span>
+    </div>
+    <div>
+        <span>Gold: </span>
+        <span>{{ task.goldValue }}</span>
+    </div>
+    <p *ngIf="dueDateString">Due: {{ dueDateString }}</p>
+    <div *ngIf="task.skills!.length > 0">
+        <h4>Skills</h4>
+        <div class="task__skill-list">
+            <span class="task__skill" *ngFor="let skill of task.skills">{{ skill.name }} </span>
         </div>
     </div>
-</a>
+</div>

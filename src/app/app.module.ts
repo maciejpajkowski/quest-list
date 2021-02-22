@@ -15,6 +15,7 @@ import { SkillListComponent } from './skill-list/skill-list.component';
 import { SkillComponent } from './skill/skill.component';
 import { EditSkillComponent } from './edit-skill/edit-skill.component';
 import { ProgressComponent } from './progress/progress.component';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,7 @@ import { ProgressComponent } from './progress/progress.component';
         EditSkillComponent,
         ProgressComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, FormsModule],
+    imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, FormsModule, DpDatePickerModule],
     providers: [],
     bootstrap: [AppComponent],
 })

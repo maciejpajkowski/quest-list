@@ -2,10 +2,10 @@
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 0 0 4px 2px #ddd;
-    padding: 22px;
     min-width: 200px;
     max-width: 250px;
     margin: 10px;
+    padding: 22px;
     position: relative;
     transition: all 0.3s;
 
@@ -77,6 +77,12 @@
 }
 
 a {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     text-decoration: none;
     color: inherit;
 }
