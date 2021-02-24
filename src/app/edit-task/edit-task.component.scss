@@ -2,6 +2,10 @@ h2 {
     text-align: center;
 }
 
+form {
+    position: relative;
+}
+
 .form__group {
     display: flex;
     flex-direction: column;
@@ -80,6 +84,12 @@ h2 {
     &:hover {
         background-color: #ccc;
     }
+}
+
+.form__button--complete {
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 .form__skill-container {

@@ -31,7 +31,7 @@
             </div>
         </div>
         <div>
-            <dp-date-picker [(ngModel)]="selectedDate"></dp-date-picker>
+            <dp-date-picker [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}"></dp-date-picker>
         </div>
         <div class="form__skill-container">
             <div class="form__group">
@@ -54,6 +54,7 @@
                 </span>
             </div>
         </div>
+        <button class="form__button form__button--complete" type="button" (click)="onTaskCompletion()" *ngIf="editMode">COMPLETE TASK</button>
         <div class="form__controls">
             <button class="form__button" type="submit">{{ editMode ? 'Modify task' : 'Add task!'}}</button>
             <button class="form__button form__button--delete" type="button" (click)="onDelete()" *ngIf="editMode">Forfeit</button>

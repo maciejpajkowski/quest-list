@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Skill } from '../shared/models/skill.model';
 import { Task } from '../shared/models/task.model';
 
 @Injectable({
@@ -9,42 +8,14 @@ import { Task } from '../shared/models/task.model';
 export class TasksService {
     public tasksChanged = new Subject<Task[]>();
     public startedEditing = new Subject<number>();
-    private tasks: Task[] = [
-        new Task(
-            0,
-            'Build this app dsasd asd asd asd as asd asd asd as das !',
-            5,
-            'This will be my first fully self-made Angular app!',
-            10000,
-            1000,
-            undefined,
-            [new Skill(0, 'Webdev'), new Skill(1, 'CSS'), new Skill(2, 'Angular')]
-        ),
-        new Task(
-            1,
-            'Build this apppppppppppppppppppppppppppppp!',
-            5,
-            'This will be my first fully self-made Angular app!',
-            10000,
-            1000,
-            undefined,
-            [new Skill(0, 'Webdev'), new Skill(1, 'CSS'), new Skill(2, 'Angular')]
-        ),
-        new Task(
-            2,
-            'Build this app!',
-            5,
-            'This will be my first fully self-made Angular app!',
-            10000,
-            1000,
-            undefined,
-            [new Skill(0, 'Webdev'), new Skill(1, 'CSS'), new Skill(2, 'Angular')]
-        ),
-    ];
+    private tasks: Task[] = [];
 
-    constructor() {}
+    constructor() {
+        this.tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    }
 
     sendUpdatedList(): void {
+        localStorage.setItem('tasks', JSON.stringify([...this.tasks]));
         this.tasksChanged.next([...this.tasks]);
     }
 

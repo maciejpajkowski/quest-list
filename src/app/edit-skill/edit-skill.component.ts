@@ -34,6 +34,14 @@ export class EditSkillComponent implements OnInit, OnDestroy {
                         level: this.currentSkill.level,
                     });
                 }, 10);
+            } else {
+                setTimeout(() => {
+                    this.skillForm.setValue({
+                        name: '',
+                        experience: 0,
+                        level: 1,
+                    });
+                }, 10);
             }
         });
     }

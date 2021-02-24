@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
+import { ProfileService } from '../services/profile.service';
 import { SkillsService } from '../services/skills.service';
 import { TasksService } from '../services/tasks.service';
 import { Skill } from '../shared/models/skill.model';
@@ -21,7 +22,7 @@ export class EditTaskComponent implements OnInit, OnDestroy {
     public subscription!: Subscription;
     public availableSkills!: Skill[];
     public selectedSkills: Skill[] = [];
-    public selectedDate: any;
+    public selectedDate!: any;
 
     faTimesCircle = faTimesCircle;
 
@@ -29,7 +30,8 @@ export class EditTaskComponent implements OnInit, OnDestroy {
         private tasksService: TasksService,
         private route: ActivatedRoute,
         private router: Router,
-        private skillsService: SkillsService
+        private skillsService: SkillsService,
+        private profileService: ProfileService
     ) {}
 
     ngOnInit(): void {
@@ -127,5 +129,21 @@ export class EditTaskComponent implements OnInit, OnDestroy {
             ({ id: id1 }) => !this.selectedSkills.some(({ id: id2 }) => id1 === id2)
         );
         this.availableSkills = results;
+    }
+
+    onTaskCompletion(): void {
+        this.tasksService.removeTask(this.currentTask.id);
+        if (this.currentTask.expValue) {
+            this.profileService.addExperience(this.currentTask.expValue);
+            if (this.currentTask.skills) {
+                for (let skill of this.currentTask.skills) {
+                    this.skillsService.addExperienceToSkill(skill.id, this.currentTask.expValue);
+                }
+            }
+        }
+        if (this.currentTask.goldValue) {
+            this.profileService.addGold(this.currentTask.goldValue);
+        }
+        this.onCancel();
     }
 }

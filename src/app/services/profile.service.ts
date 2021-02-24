@@ -25,6 +25,11 @@ export class ProfileService {
         this.sendUpdatedProfile();
     }
 
+    addGold(taskGold: number): void {
+        this.profile.gold += taskGold;
+        this.sendUpdatedProfile();
+    }
+
     private checkForLevelUp(): void {
         while (this.profile.experience >= 2000) {
             this.profile.level++;
