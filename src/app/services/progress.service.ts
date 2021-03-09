@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { Progress } from '../shared/models/progress.model';
+
+@Injectable({
+    providedIn: 'root',
+})
+export class ProgressService {
+    private progress: Progress = new Progress(0, 0, 0, 0);
+    public progressChanged = new Subject<Progress>();
+
+    constructor() {
+        this.progress = JSON.parse(localStorage.getItem('progress') || JSON.stringify({ ...this.progress }));
+    }
+
+    sendUpdatedProgress(): void {
+        localStorage.setItem('progress', JSON.stringify({ ...this.progress }));
+        this.progressChanged.next({ ...this.progress });
+    }
+
+    getProgress(): Progress {
+        return { ...this.progress };
+    }
+}

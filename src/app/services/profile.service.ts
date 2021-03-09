@@ -9,9 +9,12 @@ export class ProfileService {
     private profile = new Profile('Default profile', 1, 0, 0);
     public profileChanged = new Subject<Profile>();
 
-    constructor() {}
+    constructor() {
+        this.profile = JSON.parse(localStorage.getItem('profile') || JSON.stringify({ ...this.profile }));
+    }
 
     sendUpdatedProfile(): void {
+        localStorage.setItem('profile', JSON.stringify({ ...this.profile }));
         this.profileChanged.next({ ...this.profile });
     }
 
