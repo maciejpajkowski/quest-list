@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { ProfileService } from '../services/profile.service';
+import { ProgressService } from '../services/progress.service';
 import { SkillsService } from '../services/skills.service';
 import { TasksService } from '../services/tasks.service';
 import { Skill } from '../shared/models/skill.model';
@@ -31,7 +32,8 @@ export class EditTaskComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private skillsService: SkillsService,
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private progressService: ProgressService
     ) {}
 
     ngOnInit(): void {
@@ -94,6 +96,7 @@ export class EditTaskComponent implements OnInit, OnDestroy {
             this.tasksService.editTask(this.taskId, newTask);
         } else {
             this.tasksService.addTask(newTask);
+            this.progressService.addTasksCreatedStat();
         }
 
         this.onCancel();
@@ -133,17 +136,24 @@ export class EditTaskComponent implements OnInit, OnDestroy {
 
     onTaskCompletion(): void {
         this.tasksService.removeTask(this.currentTask.id);
+        this.progressService.addTasksCompletedStat();
+
         if (this.currentTask.expValue) {
             this.profileService.addExperience(this.currentTask.expValue);
+            this.progressService.addTotalExperienceStat(this.currentTask.expValue);
+
             if (this.currentTask.skills) {
                 for (let skill of this.currentTask.skills) {
                     this.skillsService.addExperienceToSkill(skill.id, this.currentTask.expValue);
                 }
             }
         }
+
         if (this.currentTask.goldValue) {
             this.profileService.addGold(this.currentTask.goldValue);
+            this.progressService.addTotalGoldStat(this.currentTask.goldValue);
         }
+
         this.onCancel();
     }
 }

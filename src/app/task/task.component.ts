@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { ProfileService } from '../services/profile.service';
+import { ProgressService } from '../services/progress.service';
 import { SkillsService } from '../services/skills.service';
 import { TasksService } from '../services/tasks.service';
 import { Task } from '../shared/models/task.model';
@@ -19,7 +20,8 @@ export class TaskComponent implements OnInit {
     constructor(
         private tasksService: TasksService,
         private skillsService: SkillsService,
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private progressService: ProgressService
     ) {}
 
     ngOnInit(): void {
@@ -51,16 +53,22 @@ export class TaskComponent implements OnInit {
 
     onTaskCompletion() {
         this.tasksService.removeTask(this.task.id);
+        this.progressService.addTasksCompletedStat();
+
         if (this.task.expValue) {
             this.profileService.addExperience(this.task.expValue);
+            this.progressService.addTotalExperienceStat(this.task.expValue);
+
             if (this.task.skills) {
                 for (let skill of this.task.skills) {
                     this.skillsService.addExperienceToSkill(skill.id, this.task.expValue);
                 }
             }
         }
+
         if (this.task.goldValue) {
             this.profileService.addGold(this.task.goldValue);
+            this.progressService.addTotalGoldStat(this.task.goldValue);
         }
     }
 }

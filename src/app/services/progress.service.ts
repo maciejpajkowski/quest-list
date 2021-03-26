@@ -21,4 +21,24 @@ export class ProgressService {
     getProgress(): Progress {
         return { ...this.progress };
     }
+
+    addTasksCreatedStat(): void {
+        this.progress.tasksCreated++;
+        this.sendUpdatedProgress();
+    }
+
+    addTasksCompletedStat(): void {
+        this.progress.tasksCompleted++;
+        this.sendUpdatedProgress();
+    }
+
+    addTotalExperienceStat(expAdded: number): void {
+        this.progress.totalExperience += expAdded;
+        this.sendUpdatedProgress();
+    }
+
+    addTotalGoldStat(goldAdded: number) {
+        this.progress.totalGold += goldAdded;
+        this.sendUpdatedProgress();
+    }
 }
